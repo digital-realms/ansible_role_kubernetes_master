@@ -1,2 +1,13 @@
 ---
 # tasks file for ansible_role_kubernetes_master
+  - name: ':: check :: Checking if Kubernetes master has been initialized'
+    stat:
+      path:  "{{ k8s_token_path }}"
+    register: k8stoken_check
+
+
+  - include: RedHat/main.yml
+    when: ansible_os_family == "RedHat"
+
+#include debian family here
+  - include: network.yml

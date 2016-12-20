@@ -1,0 +1,6 @@
+---
+  - include: init.yml
+    when: not k8stoken_check.stat.exists
+
+  - include: retrieve.yml
+    when: k8stoken_check.stat.exists

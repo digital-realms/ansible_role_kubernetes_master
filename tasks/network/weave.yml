@@ -1,0 +1,9 @@
+---
+  - name: ':: check :: Checking if Weave networking is already enabled on the Kubernetes master'
+    stat:
+      path:  "{{ k8s_weave_path }}"
+    register: k8snet_weave_check
+
+  - name: ':: network :: Applying Weave network plugin (and any updates) to Kubernetes'
+    command: 'kubectl apply -f https://git.io/weave-kube'
+    when: not k8snet_weave_check.stat.islnk

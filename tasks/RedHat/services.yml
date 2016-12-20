@@ -1,0 +1,9 @@
+---
+  - name: Ensuring services are enabled and running
+    systemd:
+      state: started
+      enabled: yes
+      name: "{{ item }}"
+    with_items:
+      - docker
+      - kubelet

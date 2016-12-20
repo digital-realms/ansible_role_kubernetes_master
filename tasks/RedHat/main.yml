@@ -1,0 +1,8 @@
+---
+  - name: ':: setenforce :: disabling SELinux'
+    selinux:
+      state: disabled
+
+  - include: packages.yml
+  - include: services.yml
+  - include: token/main.yml

@@ -1,0 +1,19 @@
+---
+  - name: ':: token :: generate token'
+    command: python -c 'import random; print "%0x.%0x" % (random.SystemRandom().getrandbits(3*8), random.SystemRandom().getrandbits(8*8))'
+    register: k8stoken_generated
+
+  - name: ':: token :: setting token as fact'
+    set_fact:
+      k8s_cluster_token: '{{ k8stoken_generated.stdout }}'
+
+  - name: ':: token :: saving generated token'
+    copy:
+      dest: "{{ k8s_token_path }}"
+      content: "{{ k8s_cluster_token }}"
+
+  - name: ':: init :: Kubernetes Master Initialization'
+    command: kubeadm init --token "{{ k8s_cluster_token }}"
+    args:
+      creates: /etc/kubernetes/pki
+    register: k8s_master_online

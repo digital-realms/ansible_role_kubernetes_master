@@ -1,0 +1,23 @@
+---
+  - name: ':: repo :: Ensuring Kubernetes yum repo is enabled'
+    yum_repository:
+      name: kubernetes.io
+      description: Kubernetes RHEL repo
+      file: kubernetes-rhel
+      baseurl: http://yum.kubernetes.io/repos/kubernetes-el7-x86_64
+      enabled: true
+      gpgcakey: https://packages.cloud.google.com/yum/doc/yum-key.gpg
+      gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+      gpgcheck: true
+      state: present
+
+  - name: ':: yum :: Installing Kubernetes packages'
+    yum:
+      name: "{{ item }}"
+      state: installed
+    with_items:
+      - docker
+      - kubelet
+      - kubeadm
+      - kubectl
+      - kubernetes-cni
