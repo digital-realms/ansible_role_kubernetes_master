@@ -6,4 +6,4 @@
 
   - name: ':: network :: Applying Weave network plugin (and any updates) to Kubernetes'
     command: 'kubectl apply -f https://git.io/weave-kube'
-    when: not k8snet_weave_check.stat.islnk
+    when: not k8snet_weave_check.stat.exists

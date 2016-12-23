@@ -13,7 +13,7 @@
       content: "{{ k8s_cluster_token }}"
 
   - name: ':: init :: Kubernetes Master Initialization'
-    command: kubeadm init --token "{{ k8s_cluster_token }}"
+    command: kubeadm init --token "{{ k8s_cluster_token }}" "{{ k8s_init_xtrargs }}"
     args:
       creates: /etc/kubernetes/pki
     register: k8s_master_online
