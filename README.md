@@ -1,5 +1,6 @@
 Kubernetes Master
 =========
+Master: [![Build Status](https://travis-ci.org/digital-realms/ansible_role_kubernetes_master.svg?branch=master)](https://travis-ci.org/digital-realms/ansible_role_kubernetes_master)
 
 This role installs a Kubernetes Master node (standalone) using the new `kubeadm` utility that Kubernetes provides.
 
