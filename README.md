@@ -12,8 +12,11 @@ Requirements
 ------------
 
 The master node has the following Requirements:
+
 1. Running CentOS 7 (or any other equivalent from the RHEL family should be just as fine)
+
 2. A bare minimum of 1GB RAM, ideally a minimum of 1.5GB
+
 3. Full network connectivity with any other box that will be acting as the minnion(s) of this master.
 
 **NOTE:** Last but not least, please do remember to run this role with `become: yes` to grant privileged access during the installation process.
@@ -21,7 +24,9 @@ Role Variables
 --------------
 
 The master has the following variables which will are available to be consumed:
+
 1. `k8s_network_selection:` - this variable has a default value to use `weave`, however, may be overwritten should you wish to use any other networking module. Currently its the **only** module supported. as mentioned above, if you need others, feel free to open an issue and contribute if you're feeling kind and generous :)
+
 2. `k8s_init_xtrargs:` - this allows us to pass in any extra arguments that you might want to pass to the `init` phase of the installation. this is particularly useful should you wish to pass parameters such as:
   * `--api-advertise-addresses=<ip-address>`
   * `--pod-network-cidr=10.244.0.0/16`
