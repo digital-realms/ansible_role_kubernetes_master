@@ -1,6 +1,8 @@
 Kubernetes Master
 =========
-Master: [![Build Status](https://travis-ci.org/digital-realms/ansible_role_kubernetes_master.svg?branch=master)](https://travis-ci.org/digital-realms/ansible_role_kubernetes_master)
+Master:
+
+[![Build Status](https://travis-ci.org/digital-realms/ansible_role_kubernetes_master.svg?branch=master)](https://travis-ci.org/digital-realms/ansible_role_kubernetes_master)
 
 This role installs a Kubernetes Master node (standalone) using the new `kubeadm` utility that Kubernetes provides.
 
@@ -20,19 +22,24 @@ The master node has the following Requirements:
 3. Full network connectivity with any other box that will be acting as the minnion(s) of this master.
 
 **NOTE:** Last but not least, please do remember to run this role with `become: yes` to grant privileged access during the installation process.
+
 Role Variables
 --------------
 
 The master has the following variables which will are available to be consumed:
 
-1. `k8s_network_selection:` - this variable has a default value to use `weave`, however, may be overwritten should you wish to use any other networking module. Currently its the **only** module supported. as mentioned above, if you need others, feel free to open an issue and contribute if you're feeling kind and generous :)
+1. `k8s_network_selection:` - This variable has a default value to use `weave`, however, may be overwritten should you wish to use any other networking module. Currently its the **only** module supported. as mentioned above, if you need others, feel free to open an issue and contribute if you're feeling kind and generous :)
 
-2. `k8s_init_xtrargs:` - this allows us to pass in any extra arguments that you might want to pass to the `init` phase of the installation. this is particularly useful should you wish to pass parameters such as:
+2. `k8s_init_xtrargs:` - This allows us to pass in any extra arguments that you might want to pass to the `init` phase of the installation. this is particularly useful should you wish to pass parameters such as:
   * `--api-advertise-addresses=<ip-address>`
   * `--pod-network-cidr=10.244.0.0/16`
   * `--api-external-dns-names=kubernetes.example.com,kube.example.com`.
 
   It's default is an empty string, which means that it will be bypassed.
+
+3. `k8s_taint_mode` - By default, your cluster will not schedule pods on the master for security reasons. If you want to be able to schedule pods on the master, for example if you want a single-machine Kubernetes cluster for development set this variable to `true`.
+                      You can find more information about it [here](http://kubernetes.io/docs/getting-started-guides/kubeadm/) under the `Initializing your master` section
+
 
 Dependencies
 ------------
