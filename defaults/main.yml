@@ -4,3 +4,4 @@
   k8s_weave_path: '/opt/cni/bin/weave-net'
   k8s_network_selection: 'weave'
   k8s_init_xtrargs: ''
+  k8s_taint_mode: false

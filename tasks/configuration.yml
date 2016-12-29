@@ -1,0 +1,4 @@
+---
+  - name: ':: configuration :: Configure node to be tainted'
+    command: 'kubectl taint nodes --all dedicated-'
+    when: k8s_taint_mode
