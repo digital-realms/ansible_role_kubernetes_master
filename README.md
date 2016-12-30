@@ -68,7 +68,7 @@ Should you wish to be a little bit more adventurous and would like to pass in fu
 License
 -------
 
-MIT
+[MIT](LICENSE)
 
 Author Information
 ------------------
