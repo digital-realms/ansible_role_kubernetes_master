@@ -40,6 +40,8 @@ The master has the following variables which will are available to be consumed:
 3. `k8s_taint_mode` - By default, your cluster will not schedule pods on the master for security reasons. If you want to be able to schedule pods on the master, for example if you want a single-machine Kubernetes cluster for development set this variable to `true`.
                       You can find more information about it [here](http://kubernetes.io/docs/getting-started-guides/kubeadm/) under the `Initializing your master` section
 
+4. `install_docker` - By default this role will install docker for you, if you would like to mange docker yourself, just set this variable to `false` and the role will skip the installation.
+
 
 Dependencies
 ------------
@@ -66,7 +68,7 @@ Should you wish to be a little bit more adventurous and would like to pass in fu
 License
 -------
 
-MIT
+[MIT](LICENSE)
 
 Author Information
 ------------------
