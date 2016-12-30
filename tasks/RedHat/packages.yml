@@ -11,12 +11,17 @@
       gpgcheck: true
       state: present
 
+  - name: ':: yum :: Install Docker'
+    yum:
+      name: 'docker'
+      state: installed
+    when: install_docker
+
   - name: ':: yum :: Installing Kubernetes packages'
     yum:
       name: "{{ item }}"
       state: installed
     with_items:
-      - docker
       - kubelet
       - kubeadm
       - kubectl

@@ -1,7 +1,8 @@
 ---
-# defaults file for ansible_role_kubernetes_master
+  # Defaults file for ansible_role_kubernetes_master
   k8s_token_path: '/etc/kubernetes/cluster_token'
   k8s_weave_path: '/opt/cni/bin/weave-net'
   k8s_network_selection: 'weave'
   k8s_init_xtrargs: ''
   k8s_taint_mode: false
+  install_docker: true
